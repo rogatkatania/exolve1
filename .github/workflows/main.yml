@@ -17,19 +17,10 @@ jobs:
       
     - name: Navigate to exolve1 directory and install dependencies
       run: |
+        cd root
         cd exolve1
-        npm install
+        npm install && npm audit fix && npm run build && npm run build && npm run dev -- --host
         
-    - name: Build the project
-      run: |
-        cd exolve1
-        npm run build
-        
-    - name: Run development server
-      run: |
-        cd exolve1
-        npm run dev -- --host
-
     - name: Setup loclx tunnel
       env:
         LOCLX_API_KEY: ukYnqOVVFg3f5lWvJNOVJdutrM7roPHJXiedTNcB  # убедитесь, что ваш ключ LOCLX_API_KEY добавлен в секреты GitHub

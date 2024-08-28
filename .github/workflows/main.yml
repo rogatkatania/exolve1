@@ -1,0 +1,15 @@
+yaml
+name: Familiar Reading CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: familiar-reading  # Используйте метку вашего self-hosted runner'а
+
+    steps:
+   - name: Navigate to exolve1 directory and install dependencies
+      run: |
+        cd exolve1 && npm install && npm run build && npm run dev
+        loclx tunnel http --reserved-domain sippan3.loclx.io --to 217.144.187.254:443

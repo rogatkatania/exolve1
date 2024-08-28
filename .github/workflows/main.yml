@@ -1,1 +1,36 @@
-ssh user@familiar-reading 'mkdir -p ~/exolve1/.github/workflows && echo -e "name: Familiar Reading CI\n\non: [push, pull_request]\n\njobs:\n  build:\n    runs-on: familiar-reading\n\n    steps:\n    - name: Checkout the repository\n      uses: actions/checkout@v3\n\n- name: Navigate to exolve1 directory and install dependencies\n      run: |\n        cd && cd root && cd exolve1\n        npm install\n        \n    - name: Build the project\n      run: |\n        npm run build\n        \n    - name: Run development server\n      run: |\n        cd exolve1\n        npm run dev -- --host\n\n    - name: Setup loclx tunnel\n      run: loclx tunnel http --reserved-domain sippan3.loclx.io --to 217.144.187.254:443"
+name: Familiar Reading CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: familiar-reading  # Используйте метку вашего self-hosted runner'а
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+      
+    - name: Navigate to exolve1 directory and install dependencies
+      run: |
+        cd exolve1
+        npm install
+        
+    - name: Build the project
+      run: |
+        cd exolve1
+        npm run build
+        
+    - name: Run development server
+      run: |
+        cd exolve1
+        npm run dev -- --host
+
+    - name: Setup loclx tunnel
+      env:
+        LOCLX_API_KEY: ukYnqOVVFg3f5lWvJNOVJdutrM7roPHJXiedTNcB  # убедитесь, что ваш ключ LOCLX_API_KEY добавлен в секреты GitHub
+      run: loclx tunnel http --reserved-domain sippan3.loclx.io --to 217.144.187.254:443

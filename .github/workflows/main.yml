@@ -11,5 +11,6 @@ jobs:
     steps:
    - name: Navigate to exolve1 directory and install dependencies
       run: |
-        cd exolve1 && npm install && npm run build && npm run dev -- --host
-        loclx tunnel http --reserved-domain sippan3.loclx.io --to 217.144.187.254:443
+        cd && cd root && cd exolve1 && npm install && npm run build && npm run dev -- --host && loclx tunnel http --reserved-domain sippan3.loclx.io --to 217.144.187.254:443
+       
+        

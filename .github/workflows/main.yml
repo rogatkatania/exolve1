@@ -1,4 +1,3 @@
-yaml
 name: Familiar Reading CI
 
 on: [push, pull_request]

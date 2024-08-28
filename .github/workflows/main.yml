@@ -5,7 +5,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: self-hosted  # Используйте метку вашего self-hosted runner'а, например, familiar-reading
+    runs-on: familiar-reading
 
     steps:
     - name: Checkout the repository

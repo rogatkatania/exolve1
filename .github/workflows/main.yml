@@ -1,15 +1,37 @@
+yaml
 name: Familiar Reading CI
 
 on: [push, pull_request]
 
 jobs:
   build:
-
-    runs-on: familiar-reading  # Используйте метку вашего self-hosted runner'а
+    runs-on: self-hosted  # Используйте метку вашего self-hosted runner'а, например, familiar-reading
 
     steps:
-   - name: Navigate to exolve1 directory and install dependencies
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+      
+    - name: Navigate to exolve1 directory and install dependencies
       run: |
-        cd && cd root && cd exolve1 && npm install && npm run build && npm run dev -- --host && loclx tunnel http --reserved-domain sippan3.loclx.io --to 217.144.187.254:443
-       
+        cd exolve1
+        npm install
         
+    - name: Build the project
+      run: |
+        cd exolve1
+        npm run build
+        
+    - name: Run development server
+      run: |
+        cd exolve1
+        npm run dev -- --host
+
+    - name: Setup loclx tunnel
+      env:
+        LOCLX_API_KEY: ukYnqOVVFg3f5lWvJNOVJdutrM7roPHJXiedTNcB  # убедитесь, что ваш ключ LOCLX_API_KEY добавлен в секреты GitHub
+      run: loclx tunnel http --reserved-domain sippan3.loclx.io --to 217.144.187.254:443

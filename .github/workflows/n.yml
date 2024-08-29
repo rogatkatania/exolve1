@@ -1,0 +1,16 @@
+name: remote ssh command
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: 217.144.187.254
+        username: root
+        password: 6X9rEYln8spq
+        port: 22
+        script: cd && cd root && cd exolve1 && npm install && npm run build && npm run dev -- --host

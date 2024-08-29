@@ -13,4 +13,4 @@ jobs:
         username: root
         password: 6X9rEYln8spq
         port: 22
-        script: cd && cd root && cd exolve1 && npm install && npm run build && npm run dev -- --host
+        script: .sh run_commands.sh

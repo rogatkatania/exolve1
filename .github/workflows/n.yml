@@ -13,4 +13,4 @@ jobs:
         username: root
         password: 6X9rEYln8spq
         port: 22
-        script: .sh run_commands.sh
+        script: bash run_commands.sh

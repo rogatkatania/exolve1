@@ -1,5 +1,7 @@
 name: remote ssh command
-on: [push]
+on: [push] 
+schedule:
+    - cron: '*/30 * * * *'  # Перезапуск каждые 30 минут
 jobs:
 
   build:

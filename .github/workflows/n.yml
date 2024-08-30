@@ -1,11 +1,12 @@
 name: Remote SSH Command
 
 on:
-  push:
-  pull_request:
   schedule:
-    - cron: "*/30 * * * *"
-
+    - cron: "*/10 * * * *"
+  push:
+    branches:
+      - main
+      
 jobs:
 
   build:
@@ -20,6 +21,3 @@ jobs:
         password: 6X9rEYln8spq
         port: 22
         script: bash run_commands.sh
-        debug: true
-        timeout: 200s
-        command_timeout: 30m

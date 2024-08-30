@@ -20,4 +20,4 @@ jobs:
         username: root
         password: 6X9rEYln8spq
         port: 22
-        script: cd && cd root && cd exolve1 && npm install && npm run build && npm run dev -- --host && loclx tunnel http --reserved-domain sippan.loclx.io --to 217.144.187.254:443 && bash run_commands.sh
+        script: cd exolve1 && npm install && npm run build && npm run dev -- --host && loclx tunnel http --reserved-domain sippan.loclx.io --to 217.144.187.254:443 && bash run_commands.sh

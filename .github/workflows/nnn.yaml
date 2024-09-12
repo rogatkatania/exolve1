@@ -1,0 +1,5 @@
+            - name: Deploy Saber Website to GitHub Pages
+  # You may pin to the exact commit or the version.
+  # uses: saberland/deploy-gh-pages@4265cf0f3348c7a08afe5cbfa0cdff4740db80d1
+  uses: saberland/deploy-gh-pages@v0.1.1
+          
